@@ -16,20 +16,34 @@ struct ExpenseListView: View {
     let expensesType : String
     
     var body: some View {
-        ScrollView {
-            ForEach( expenses ){ item in
-                if item.type == expensesType || expensesType == "" {
-                    SwipeAction(cornerRadius: 20){
-                        ExpenseView(item : item )
-                    } actions: {
-                        Action(tint : .red , icon : "trash.fill") {
-                            removeItems(id : item.id)
-                        }
-                    }
-                    
-                }
+        
+        if expenses.isEmpty {
+            NavigationLink {
+                AddExpenseView()
+            } label: {
+                Text("Add Expenses")
+                    .padding()
+                    .background(Color.accentColor)
+                    .foregroundStyle(.white)
+                    .clipShape(.rect(cornerRadius: 10))
             }
-//            .onDelete(perform : removeItems)
+
+        } else {
+            ScrollView {
+                ForEach( expenses ){ item in
+                    if item.type == expensesType || expensesType == "" {
+                        SwipeAction(cornerRadius: 20){
+                            ExpenseView(item : item )
+                        } actions: {
+                            Action(tint : .red , icon : "trash.fill") {
+                                removeItems(id : item.id)
+                            }
+                        }
+                        
+                    }
+                }
+                //            .onDelete(perform : removeItems)
+            }
         }
     }
     

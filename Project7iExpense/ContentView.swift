@@ -30,24 +30,24 @@ struct ContentView: View {
                     ExpenseListView(expensesType: "" , sortOrder: sortOrder)
                         .padding(.horizontal)
                         .tabItem {
-                            Text("All")
+                            Label("All", systemImage: "list.bullet")
                         }
                     ExpenseListView(expensesType: "Personal" , sortOrder: sortOrder)
                         .padding(.horizontal)
                         .tabItem {
-                            Text("Personal")
+                            Label("Personal", systemImage: "person.crop.circle")
                         }
                     
                     ExpenseListView(expensesType: "Business" , sortOrder: sortOrder)
                         .tabItem {
-                            Text("Business")
+                            Label("Business" , systemImage: "briefcase")
                         }
                         .padding(.horizontal)
                 }
                 
                 
                 .sheet(isPresented : $showingAddExpense ){
-                    AddView()
+                    AddExpenseView()
                 }
                 
             }
@@ -76,7 +76,7 @@ struct ContentView: View {
 
                 ToolbarItem {
                     NavigationLink {
-                        AddView()
+                        AddExpenseView()
                     } label: {
                         Label("Add expense" , systemImage: "plus")
                     }

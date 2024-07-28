@@ -28,7 +28,7 @@ struct ExpenseView: View {
             }
         }
         .padding()
-        .background( item.amount <= 10 ? Color.green : item.amount <= 100 ? Color.blue : Color.orange)
+        .background( item.amount <= 100 ? Color.green : item.amount <= 1000 ? Color.blue : Color.orange)
         .foregroundStyle(.white)
         .clipShape(.rect(cornerRadius: 20))
         
